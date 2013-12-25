@@ -1,0 +1,8 @@
+<?php
+
+return array(
+    "debug" => true,        // Debug Mode or not
+    "mode" => 'development',    // production for Production
+    'cookies.secret_key' => '12345689-',
+    'salt' => 'this is a salt',
+);

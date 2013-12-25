@@ -1,0 +1,15 @@
+<?php
+
+// Options for views
+
+return array(
+    'dbname' => 'std_database',
+    'user' => 'root',
+    'password' => '',
+    'host' => 'localhost',
+    'charset' => 'utf8',
+    'driver' => 'pdo_mysql',
+    'driverOptions' => array(
+        1002=>'SET NAMES utf8'
+    )
+);
