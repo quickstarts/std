@@ -4,3 +4,4 @@ std/cache/
 wwwroot/static/components
 std/config/database.php
 std/config/development.php
+vendor
