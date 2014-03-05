@@ -11,8 +11,14 @@ define ("APPROOT", realpath(DOCROOT . "std/") . DIRECTORY_SEPARATOR);
 define ("WEBROOR", realpath(DOCROOT . "wwwroot/") . DIRECTORY_SEPARATOR);
 
 // 引入依赖库
-require_once(PKGROOT. "autoload.php");
-require_once(APPROOT. "app.php");
 
-$app = create_app();
+require(PKGROOT . "autoload.php");
+require_once(APPROOT . "app.php");
+
+$configs = array(
+    WEBROOT . 'development.conf.php',
+    WEBROOT . 'custom.conf.php',
+);
+
+$app = create_app($configs);
 $app->run();

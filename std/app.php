@@ -1,18 +1,36 @@
 <?php
 
+use \Utils;
+
 require_once(APPROOT . "extensions.php");
-require_once(APPROOT . "controller.php");
-require_once(APPROOT . "hook.php");
+$config = require_once(APPROOT . 'config/config.php');
+
+// Require all controllers. But some controllers need to be merged or removed
+$controllers = array (
+    'home_app' => Utils::require_controller('master/home'),
+);
 
 // Create app using factory.
-function create_app($config_filename="custom.php"){
-    $config = require_once(APPROOT. "config/config.php");
-    $custom = require_once(APPROOT. "config/". $config_filename);
-    $app = new \Slim\Slim($config);
+function create_app ($config_files=array()) {
+    if(!is_array($config_files))
+        exit('Config Files are not array.');
+
+    $app = new Slimx();
+
+    global $config;
+    $app->config($config);
+    foreach($config_files as $cfil){
+        $app->config(require_once($cfil));
+    }
 
     setup_hooks($app);
     setup_views($app);
-    init_controllers($app);
+
+    // Register all controllers in global variable $controllers
+    global $controllers;
+    extract($controllers);
+
+    $app->register_controller($home_app);
 
     return $app;
 }

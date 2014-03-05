@@ -1,0 +1,11 @@
+<?php
+
+// Options for views
+
+return array(
+    'dbname' => 'std',
+    'user' => 'root',
+    'password' => '',
+    'host' => 'localhost',
+    'driver' => 'pdo_mysql'
+);

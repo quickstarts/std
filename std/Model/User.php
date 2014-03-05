@@ -1,6 +1,7 @@
 <?php
 
-require_once(APPROOT. "models/ModelBase.php");
+namespace Model;
+use \RBAC\Authentication;
 
 /** 
  * @Entity 
@@ -124,6 +125,13 @@ class User extends ModelBase{
 
     public function __construct($username) {
         $this->username = $username;
+    }
+
+    public function hasPermission ($resource, $method) {
+        $ptable = require(APPROOT . "permissions.php");
+        $auth = new Authentication();
+        $auth->load($ptable);
+        return $auth->accessiable($this, $resource, $method);
     }
 
     static public function validateToken($user, $token, $salt) {

@@ -1,6 +1,6 @@
 <?php
 
-// Settings for views
+// Options for views
 
 return array(
     'debug' => true,

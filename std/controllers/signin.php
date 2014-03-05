@@ -5,8 +5,9 @@ return array(
             $app->render("index.html", get_defined_vars());
         });
 
-        $app->get("/test", function() use($app) {
-            $app->echo('test');
+        $app->get("/signin", function() use($app) {
+            $test = 'testaaaa';
+            $app->render("signin.html", get_defined_vars());
         });
     }
 );
